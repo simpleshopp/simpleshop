@@ -1,8 +1,8 @@
-import Navigation from "@/app/components/Navigation";
-import Footer from "@/app/components/Footer";
-import BackButton from "@/app/components/BackButton";
-import ProductInfo from "@/app/components/ProductInfo";
-import Reviews from "@/app/components/Reviews";
+import Navigation from "@/components/layout/Navigation";
+import Footer from "@/components/layout/Footer";
+import BackButton from "@/components/ui/BackButton";
+import ProductInfo from "@/components/ProductInfo";
+import Reviews from "@/components/Reviews";
 
 export default function Product({ searchParams }) {
   return (
