@@ -3,17 +3,17 @@ import Footer from "@/components/layout/Footer";
 import ProductList from "@/components/ProductList";
 import Category from "@/components/ui/Category";
 import SearchBar from "@/components/ui/SearchBar";
-import Payment from "../payment/page";
+import PaymentCard from "@/components/cards/PaymentCard";
 
-export default function Products({ searchParams }) {
+export default function Products() {
   return (
     <>
-      <Navigation />
-      <Category />
-      <SearchBar />
+      {/* <Navigation /> */}
+      {/* <Category /> */}
+      {/* <SearchBar /> */}
       <ProductList />
-      <Payment />
-      <Footer />
+      {/* <PaymentCard />
+      <Footer /> */}
     </>
   );
 }
