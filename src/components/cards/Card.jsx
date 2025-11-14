@@ -14,7 +14,7 @@ async function CardContainer() {
   const response = await fetch(`https://dummyjson.com/products`);
   const { products } = await response.json();
   return products.map((product) => (
-    <div className="pb-2 m-3">
+    <div className="pb-2 m-3" key={product.id}>
       <div className="grid">
         <div className="z-10 col-start-1 row-start-1 m-4 ">
           <div className="items-center gap-2 rounded-2xl px-3 py-2 place-content-end">

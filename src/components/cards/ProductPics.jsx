@@ -1,32 +1,38 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 
-const ProductPics = () => {
+const ProductPics = ({ images = [] }) => {
+  const [activeImg, setActiveImg] = useState(images[0]);
+
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div>
+      {/* Stort billede styres af state */}
       <Image
-        loading="eager"
-        alt={product.title}
-        src={product.thumbnail}
-        width={300}
-        height={200}
-        className="rounded-2xl"
+        src={activeImg}
+        alt="Produktbillede"
+        width={600}
+        height={400}
+        className="rounded-2xl mb-4"
       />
-      <Image
-        loading="eager"
-        alt={product.title}
-        src={product.thumbnail}
-        width={300}
-        height={200}
-        className="rounded-2xl"
-      />
-      <Image
-        loading="eager"
-        alt={product.title}
-        src={product.thumbnail}
-        width={300}
-        height={200}
-        className="rounded-2xl"
-      />
+      {/* Thumbnails */}
+      <div className="grid grid-cols-3 gap-3">
+        {images.map((img, index) => (
+          <button
+            className="bg-white!"
+            key={index}
+            onClick={() => setActiveImg(img)}
+          >
+            <Image
+              src={img}
+              alt="Thumbnail"
+              width={150}
+              height={100}
+              className="rounded-2xl cursor-pointer "
+            />
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
