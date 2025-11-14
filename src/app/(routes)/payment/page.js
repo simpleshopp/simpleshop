@@ -1,6 +1,6 @@
-import Navigation from "@/app/components/Navigation";
-import Footer from "@/app/components/Footer";
-import CheckOut from "@/app/components/CheckOut";
+import Navigation from "@/components/layout/Navigation";
+import Footer from "@/components/layout/footer";
+import CheckOut from "@/components/CheckOut";
 
 export default function Payment({ searchParams }) {
   return (
