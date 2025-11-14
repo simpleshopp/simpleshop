@@ -1,10 +1,12 @@
 import ProductView from "@/components/cards/ProductView";
-import ProductView from "@/components/cards/PaymentCard";
+import PaymentCard from "@/components/cards/PaymentCard";
 
 const ProductInfo = () => {
   return (
-    <section className="grid grid-cols-2">
-      <ProductView />
+    <section className="grid grid-cols-3 px-26 py-10">
+      <div className="col-span-2">
+        <ProductView />
+      </div>
       <PaymentCard />
     </section>
   );
