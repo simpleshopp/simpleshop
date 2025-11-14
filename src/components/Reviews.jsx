@@ -1,15 +1,31 @@
 import ReviewCard from "./cards/ReviewCard";
+import ReviewStars from "./ReviewStars";
+
+const Reviews = async ({ productId }) => {
+  "use server";
+  const response = await fetch(`https://dummyjson.com/products/${productId}`);
+  const { reviews = [] } = await response.json();
+
+  // Beregning af gennemsnit for ratings:
+
+  //1: lægger alle ratings fra reviews-arrayet sammen.
+  //    Reduce starter med 0 og lægger hver review.rating til.
+  const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+  //2: beregner gennemsnittet af ratings (hvis der er reviews)
+  const averageRating = reviews.length ? totalRating / reviews.length : 0;
+  //3: runder gennemsnittet ned til nærmeste hele tal for antal stjerner
+  const filledStars = Math.floor(averageRating);
 
 
-const Reviews = ({reviews}) => {
   return (
-    <div className=" px-26">
-      <div className="h-px w-4/5 bg-gray-300 my-4 mx-auto"></div>{" "}
-      {/* Når stregens bredde er mindre en 100% (fx. w-4/5 80%) vil mx-auto automatisk fordele den resterende plads på begge sider af elementet */}
-      <h2>Reviews: </h2>
+    <div className="px-26">
+      <div className="h-px w-4/5 bg-gray-300 my-4 mx-auto"></div>
+      <h2>
+        Reviews: <ReviewStars filledStars={filledStars} averageRating={averageRating} />
+      </h2>
       <div className="flex gap-8 justify-center py-4">
-        {reviews.map((review) => (
-          <ReviewCard key={review.reviewerEmail} product={review} />
+        {reviews.map((review, index) => (
+          <ReviewCard key={index} product={review} />
         ))}
       </div>
     </div>

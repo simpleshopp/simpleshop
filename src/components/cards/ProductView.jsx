@@ -13,7 +13,7 @@ const ProductView = () => {
           height={200}
           className="rounded-2xl"
         />
-        <ProductPics />
+        {/* <ProductPics /> */}
       </div>
       <div>
         <h2>{product.title}</h2>
