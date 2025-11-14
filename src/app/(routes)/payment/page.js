@@ -1,12 +1,14 @@
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
-import Hero from "@/app/components/Hero";
+import CheckOut from "@/app/components/CheckOut";
 
-export default function Home({ searchParams }) {
+export default function Payment({ searchParams }) {
   return (
     <>
       <Navigation />
-      <Hero />
+
+      <CheckOut />
+
       <Footer />
     </>
   );
