@@ -8,12 +8,14 @@ import PaymentCard from "@/components/cards/PaymentCard";
 export default function Products() {
   return (
     <>
-       <Navigation /> 
-       <Category /> 
-       <SearchBar /> 
-      <ProductList />
-       <PaymentCard />
-      <Footer /> 
+      <Navigation />
+      <Category />
+      <SearchBar />
+      <div className="grid grid-cols-[2fr_0.5fr] p-5">
+        <ProductList />
+        <PaymentCard />
+      </div>
+      <Footer />
     </>
   );
 }
