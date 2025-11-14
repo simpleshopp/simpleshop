@@ -7,7 +7,6 @@ export default function Home({ searchParams }) {
   return (
     <>
       <Navigation />
-      <SearchBar />
       <Hero />
       <Footer />
     </>
