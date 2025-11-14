@@ -8,7 +8,7 @@ export default function Product({ searchParams }) {
   return (
     <>
       <Navigation />
-      {/* <BackButton /> */}
+      <BackButton />
       <ProductInfo />
       <Reviews />
       <Footer />
