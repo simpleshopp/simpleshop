@@ -1,5 +1,6 @@
 import Image from "next/image";
 import CardButton from "@/components/ui/CardButton";
+import Link from "next/link";
 
 const Card = () => {
   return (
@@ -22,8 +23,9 @@ const Card = () => {
           className="col-start-1 row-start-1 rounded-2xl"
         />
       </div>
-
-      <h2 className="pb-2">Gobibjørn</h2>
+      <Link href="/products/hej">
+        <h2 className="pb-2">Gobibjørn</h2>
+      </Link>
       <CardButton />
     </div>
   );
