@@ -1,10 +1,11 @@
 import ProductView from "@/components/cards/ProductView";
+import ProductView from "@/components/cards/PaymentCard";
 
 const ProductInfo = () => {
   return (
-    <section className="grid">
+    <section className="grid grid-cols-2">
       <ProductView />
-      <div></div>
+      <PaymentCard />
     </section>
   );
 };
