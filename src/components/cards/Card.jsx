@@ -33,7 +33,7 @@ async function CardContainer() {
           className="col-start-1 row-start-1 rounded-2xl"
         />
       </div>
-      <Link href={`/products/${product.id}`}>
+      <Link href={`/products/${product.id}`} key={product.id}>
         <h1 className="py-2">{product.title}</h1>
         <CardButton />
       </Link>
