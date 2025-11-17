@@ -3,58 +3,73 @@ import Link from "next/link";
 import useStore from "../store/CartStore";
 import PaymentButton from "../ui/PaymentButton";
 import Image from "next/image";
+import { MdDeleteOutline } from "react-icons/md";
 
 const CheckOutCard = () => {
   const { basketProducts, removeFromBasket, totalPrice } = useStore();
 
   return (
-    <div>
-      <h2 className="text-center">Your Cart</h2>
-      {basketProducts.length === 0 ? (
-        <p className="m-10 flex justify-center">your basket is empty</p>
-      ) : (
-        <ul className="flex flex-col gap-4 ">
-          {basketProducts.map((item) => (
-            <li className="flex items-center pt-4" key={item.id}>
-              <button
-                onClick={() => removeFromBasket(item.id)}
-                className="p1-6 text-2xl"
-              >
-                x
-              </button>
-              <div className="flex justify-between items-center w-full">
-                <div className="flex flex-row items-center gap-2">
-                  <span>
-                    <Image
-                      loading="eager"
-                      alt="hej"
-                      src={item.thumbnail}
-                      width={100}
-                      height={50}
-                      className=""
-                    />
-                  </span>
+    <div className="mx-26 mb-16 -mt-4">
+      <div className="w-full  px-6 py-12 bg-white shadow-lg rounded-2xl">
+        {/* Titel */}
+        <h2 className="text-2xl font-semibold text-center mb-8">Your Cart</h2>
 
-                  <span className="flex justify-center">{item.title}</span>
+        {basketProducts.length === 0 ? (
+          <p className="text-center text-gray-500 py-16">
+            Your basket is empty
+          </p>
+        ) : (
+          <ul className="flex flex-col gap-6">
+            {basketProducts.map((item) => (
+              <li
+                key={item.id}
+                className="flex items-center justify-between p-4 bg-gray-50 rounded-xl shadow-sm "
+              >
+                {/* Thumbnail + titel */}
+                <div className="flex items-center gap-4">
+                  <Image
+                    loading="eager"
+                    alt={item.title}
+                    src={item.thumbnail}
+                    width={80}
+                    height={80}
+                    className="rounded-lg object-cover"
+                  />
+                  <span className="font-medium  group-hover:text-red-700">
+                    {item.title}
+                  </span>
                 </div>
-                <div>
-                  <span>${item.price}</span>
+
+                {/* Pris + remove */}
+                <div className="flex items-center gap-4">
+                  <span className="font-semibold group-hover:text-red-700">
+                    ${item.price}
+                  </span>
+                  <div
+                    onClick={() => removeFromBasket(item.id)}
+                    className="text-red-500 group-hover:text-red-700 text-xl font-bold cursor-pointer group"
+                  >
+                    <MdDeleteOutline />
+                  </div>
                 </div>
-              </div>
+              </li>
+            ))}
+
+            {/* Total */}
+            <li className="flex justify-between items-center pt-4 border-t border-gray-200 text-lg font-semibold">
+              <span>Total</span>
+              <span>${totalPrice}</span>
             </li>
-          ))}
-          <div className="mb-8 flex justify-end gap-4">
-            <span>Total</span>
-            <span>${totalPrice}</span>
-          </div>
-        </ul>
-      )}
-      <Link
-        href="/payment"
-        className="mx-auto flex rounded-full px-8 py-2 cursor-pointer justify-end"
-      >
-        <button className="px-6 py-2">Buy</button>
-      </Link>
+          </ul>
+        )}
+
+        {/* Checkout */}
+        <Link href="/payment" className="mt-8 block w-full">
+          <button className="w-full bg-black text-white py-3 rounded-full text-lg font-medium hover:bg-gray-900 transition">
+            Go to Checkout
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

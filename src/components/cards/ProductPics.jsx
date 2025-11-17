@@ -12,11 +12,11 @@ const ProductPics = ({ images = [] }) => {
         src={activeImg}
         alt="Produktbillede"
         width={600}
-        height={400}
-        className="rounded-2xl mb-4"
+        height={200}
+        className="-mb-14"
       />
       {/* Thumbnails */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-2 ">
         {images.map((img, index) => (
           <button
             className="bg-white!"

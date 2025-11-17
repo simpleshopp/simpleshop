@@ -1,7 +1,6 @@
 "use client";
 import useStore from "../store/CartStore";
 
-
 export default function AddToBasketButton({ product }) {
   const addToBasket = useStore((state) => state.addToBasket);
   return (
@@ -9,7 +8,7 @@ export default function AddToBasketButton({ product }) {
       onClick={() => addToBasket(product)}
       className="w-full px-4 py-2 bg-cyan-500 text-white rounded-lg font-medium  cursor-pointer"
     >
-      Læg i kurv
+      Add to Cart
     </button>
   );
 }

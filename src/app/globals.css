@@ -28,9 +28,7 @@ h3 {
   color: var(--color-heading);
   font-size: var(--font-h3);
 }
-p {
-  font-size: var(--font-p);
-}
+
 button {
   font-size: var(--font-button);
   color: var(--color-text-button);

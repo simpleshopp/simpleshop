@@ -16,12 +16,12 @@ const Reviews = async ({ productId }) => {
   //3: runder gennemsnittet ned til nærmeste hele tal for antal stjerner
   const filledStars = Math.floor(averageRating);
 
-
   return (
-    <div className="px-26">
-      <div className="h-px w-4/5 bg-gray-300 my-4 mx-auto"></div>
-      <h2>
-        Reviews: <ReviewStars filledStars={filledStars} averageRating={averageRating} />
+    <div className="mb-8 ">
+      <div className="h-px bg-gray-300 my-4 "></div>
+      <h2 className="">
+        Reviews:{" "}
+        <ReviewStars filledStars={filledStars} averageRating={averageRating} />
       </h2>
       <div className="flex gap-8 justify-center py-4">
         {reviews.map((review, index) => (

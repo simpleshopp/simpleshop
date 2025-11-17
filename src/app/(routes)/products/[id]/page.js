@@ -6,6 +6,7 @@ import ProductPics from "@/components/cards/ProductPics";
 import Reviews from "@/components/Reviews";
 import PaymentCard from "@/components/cards/PaymentCard";
 import BasketButton from "@/components/ui/BasketButton";
+import Tags from "@/components/ui/Tags";
 
 import Image from "next/image";
 
@@ -35,26 +36,57 @@ async function ProductContainer({ params }) {
     <>
       <Navigation />
       <BackButton />
-      <div className="px-26 py-8">
-        <section className="grid grid-cols-[2fr_1fr_1fr] gap-16">
-          <div className="col-span-2 grid grid-cols-2 gap-8">
-            <div className="grid gap-3">
-              <ProductPics images={product.images} />
-            </div>
+      <div className="max-w-6xl mx-auto px-8 mb-10 -mt-15">
+        <section className="grid grid-cols-2 gap-20 ">
+          <ProductPics className="" images={product.images} />
+
+          <div className="flex flex-col pt-15 h-full">
             <div>
-              <h2>{product.title}</h2>
-              <p>{product.description}</p>
-              <div className="my-6">
-                <BasketButton product={product} />
+              <Tags tags={product.tags} />
+              <div className="flex justify-between">
+                <h1 className="mt-4 text-4xl font-semibold tracking-tight">
+                  {product.title}
+                </h1>
+                <h4 className="text-2xl text-gray-900 py-4">
+                  ${product.price}
+                </h4>
               </div>
             </div>
-          </div>
-          <div>
-            <PaymentCard product={product} />
+            <div className=" mb-6 px-6 py-4 shadow-sm rounded-lg my-9">
+              <h2 className="mb-4">Description</h2>
+              <p className="text-gray-700">{product.description}</p>
+            </div>
+
+            <div className="pt-25">
+              <BasketButton product={product} />
+            </div>
+
+            <div className="my-6">
+              <span
+                className={`
+        px-3 py-1 rounded-full shrink-0
+        ${
+          product.availabilityStatus.toLowerCase().includes("in stock")
+            ? "bg-green-100 text-green-700"
+            : "bg-red-100 text-red-700"
+        }
+      `}
+              >
+                {product.availabilityStatus}
+              </span>
+              <p className="mt-2 text-gray-400 text-xs">
+                {product.shippingInformation}
+              </p>
+            </div>
           </div>
         </section>
+        <div className="grid grid-cols-2 gap-20">
+          <Reviews productId={product.id} />
+          <div className="mt-5">
+            <PaymentCard product={product} />
+          </div>
+        </div>
       </div>
-      <Reviews productId={product.id} />
       <Footer />
     </>
   );

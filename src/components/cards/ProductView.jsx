@@ -17,8 +17,8 @@ const ProductView = () => {
       </div>
       <div>
         <h2>{product.title}</h2>
+        <h2>{product.price}</h2>
         <p>{product.description}</p>
-    
       </div>
     </section>
   );
