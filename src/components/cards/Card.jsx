@@ -2,6 +2,7 @@ import Image from "next/image";
 import CardButton from "@/components/ui/CardButton";
 import Link from "next/link";
 import { Suspense } from "react";
+import BasketButton from "../ui/BasketButton";
 
 export default function Card({ category }) {
   return (
@@ -40,6 +41,7 @@ async function CardContainer({ category }) {
         <h2 className="py-2">{product.title}</h2>
         <p className="py-2">{product.price} $</p>
         <CardButton />
+        <BasketButton />
       </Link>
     </div>
   ));
