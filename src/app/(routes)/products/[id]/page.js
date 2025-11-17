@@ -5,6 +5,7 @@ import ProductInfo from "@/components/ProductInfo";
 import ProductPics from "@/components/cards/ProductPics";
 import Reviews from "@/components/Reviews";
 import PaymentCard from "@/components/cards/PaymentCard";
+import BasketButton from "@/components/ui/BasketButton";
 
 import Image from "next/image";
 
@@ -19,9 +20,9 @@ export default function Product({ params }) {
 }
 
 async function ProductContainer({ params }) {
-  const {id} = await params;
-    const response = await fetch(`https://dummyjson.com/products/${id}`);
-    const product = await response.json();
+  const { id } = await params;
+  const response = await fetch(`https://dummyjson.com/products/${id}`);
+  const product = await response.json();
   // Henter id fra URL'en — fx /detalje?id=7
   // const params = await searchParams;
   // const id = params.id;
@@ -43,14 +44,17 @@ async function ProductContainer({ params }) {
             <div>
               <h2>{product.title}</h2>
               <p>{product.description}</p>
+              <div className="my-6">
+                <BasketButton />
+              </div>
             </div>
           </div>
-          <div >
+          <div>
             <PaymentCard product={product} />
           </div>
         </section>
       </div>
-<Reviews productId={product.id}/>
+      <Reviews productId={product.id} />
       <Footer />
     </>
   );

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ProductPics from "@/components/cards/ProductPics";
+import BasketButton from "@/components/ui/BasketButton";
 
 const ProductView = () => {
   return (
@@ -13,11 +14,11 @@ const ProductView = () => {
           height={200}
           className="rounded-2xl"
         />
-        {/* <ProductPics /> */}
       </div>
       <div>
         <h2>{product.title}</h2>
         <p>{product.description}</p>
+    
       </div>
     </section>
   );
