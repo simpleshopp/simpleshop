@@ -45,7 +45,7 @@ async function ProductContainer({ params }) {
               <h2>{product.title}</h2>
               <p>{product.description}</p>
               <div className="my-6">
-                <BasketButton />
+                <BasketButton product={product} />
               </div>
             </div>
           </div>
