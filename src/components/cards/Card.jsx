@@ -41,8 +41,8 @@ async function CardContainer({ category }) {
         <h2 className="py-2">{product.title}</h2>
         <p className="py-2">{product.price} $</p>
         <CardButton />
-        <BasketButton />
       </Link>
+      <BasketButton product={product} />
     </div>
   ));
 }
