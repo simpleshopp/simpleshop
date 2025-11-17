@@ -1,13 +1,14 @@
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
-import CheckOut from "@/components/CheckOut";
+import CheckOutCard from "@/components/cards/CheckOutCard";
 
 export default function Payment({ searchParams }) {
   return (
     <>
       <Navigation />
-
-      <CheckOut />
+      <div className="grid px-26">
+        <CheckOutCard />
+      </div>
 
       <Footer />
     </>
