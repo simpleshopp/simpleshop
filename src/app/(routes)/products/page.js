@@ -10,11 +10,11 @@ export default function Products({ searchParams }) {
   return (
     <>
       <Navigation />
-      <div className=" flex px-10 py-5">
+      <div className=" flex px-10 py-5 mx-26">
         <Category />
         <SearchBar />
       </div>
-      <div className="grid grid-cols-[2fr_0.5fr] p-5">
+      <div className="grid grid-cols-[2fr_0.5fr] p-5 mx-26">
         <Suspense>
           <ProductListContainer searchParams={searchParams} />
         </Suspense>

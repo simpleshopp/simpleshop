@@ -19,11 +19,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 h1 {
-  color: var(--color-heading);
   font-size: var(--font-h1);
 }
 h2 {
-  color: var(--color-heading);
   font-size: var(--font-h2);
 }
 h3 {
@@ -31,7 +29,6 @@ h3 {
   font-size: var(--font-h3);
 }
 p {
-  color: var(--color-text);
   font-size: var(--font-p);
 }
 button {
