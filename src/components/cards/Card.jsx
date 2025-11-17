@@ -37,12 +37,15 @@ async function CardContainer({ category }) {
           className="col-start-1 row-start-1 rounded-2xl"
         />
       </div>
+
       <Link href={`/products/${product.id}`} key={product.id}>
         <h2 className="py-2">{product.title}</h2>
         <p className="py-2">{product.price} $</p>
-        <CardButton />
       </Link>
-      <BasketButton product={product} />
+      <div className="flex gap-4">
+        <CardButton />
+        <BasketButton product={product} />
+      </div>
     </div>
   ));
 }
