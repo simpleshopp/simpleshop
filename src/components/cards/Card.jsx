@@ -3,15 +3,18 @@ import CardButton from "@/components/ui/CardButton";
 import Link from "next/link";
 import { Suspense } from "react";
 
-export default function Card() {
+export default function Card({ category }) {
   return (
     <Suspense>
-      <CardContainer />
+      <CardContainer category={category} />
     </Suspense>
   );
 }
-async function CardContainer() {
-  const response = await fetch(`https://dummyjson.com/products`);
+async function CardContainer({ category }) {
+  const url = category
+    ? `https://dummyjson.com/products/category/${category}`
+    : `https://dummyjson.com/products`;
+  const response = await fetch(url);
   const { products } = await response.json();
   return products.map((product) => (
     <div className="pb-2 m-3" key={product.id}>
@@ -34,7 +37,8 @@ async function CardContainer() {
         />
       </div>
       <Link href={`/products/${product.id}`} key={product.id}>
-        <h1 className="py-2">{product.title}</h1>
+        <h2 className="py-2">{product.title}</h2>
+        <p className="py-2">{product.price} $</p>
         <CardButton />
       </Link>
     </div>
