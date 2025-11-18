@@ -16,9 +16,13 @@ export default function Products({ searchParams }) {
       </div>
       <div className="grid grid-cols-[2fr_0.5fr] p-5 mx-26">
         <Suspense>
-          <ProductListContainer searchParams={searchParams} />
+          <div>
+            <ProductListContainer searchParams={searchParams} />
+          </div>
         </Suspense>
-        <PaymentCard />
+        <div>
+          <PaymentCard />
+        </div>
       </div>
       <Footer />
     </>
@@ -26,16 +30,32 @@ export default function Products({ searchParams }) {
 }
 
 async function ProductListContainer({ searchParams }) {
-  const { category } = await searchParams;
-  console.log(category);
+  const { category, search } = await searchParams;
+
+  // Hent produkter fra API
+  let url = category
+    ? `https://dummyjson.com/products/category/${category}`
+    : `https://dummyjson.com/products`;
+  const response = await fetch(url);
+  const { products } = await response.json();
+
+  // Filtrer produkter kun på titel hvis search er angivet
+  const filteredProducts = search
+    ? products.filter((product) =>
+        product.title.toLowerCase().includes(search.toLowerCase()),
+      )
+    : products;
+
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4 pl-5">
         {category
           ? category.charAt(0).toUpperCase() + category.slice(1)
           : "Alle produkter"}
+        {search ? ` — Søg: ${search}` : ""}
       </h1>
-      <ProductList category={category} />;
+      {/* Send filtrerede produkter til ProductList */}
+        <ProductList category={category} search={search} />
     </div>
   );
 }
