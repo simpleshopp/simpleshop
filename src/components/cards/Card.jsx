@@ -1,40 +1,52 @@
 import Image from "next/image";
 import Tags from "@/components/ui/Tags";
 import Link from "next/link";
-import { Suspense } from "react";
 import BasketButton from "../ui/BasketButton";
+import { Suspense } from "react";
 
-export default function Card({ category }) {
+// Card-listen: Suspense + async container
+export default function Card({ category, search }) {
   return (
-    <Suspense>
-      <CardContainer category={category} />
+    <Suspense fallback={<div>Loading...</div>}>
+      <CardContainer category={category} search={search} />
     </Suspense>
   );
 }
-async function CardContainer({ category }) {
-  const url = category
+
+// Async container: henter og filtrerer produkter
+async function CardContainer({ category, search }) {
+  // Hent produkter fra API
+  let url = category
     ? `https://dummyjson.com/products/category/${category}`
     : `https://dummyjson.com/products`;
   const response = await fetch(url);
   const { products } = await response.json();
-  return products.map((product) => (
+
+  // Filtrer produkter på titel
+  const filteredProducts = search
+    ? products.filter((product) =>
+        product.title.toLowerCase().includes(search.toLowerCase()),
+      )
+    : products;
+
+  // Render alle produkter
+  return filteredProducts.map((product) => (
     <div
-      className="pb-2 m-3 border-2 rounded-2xl border-neutral-100 overflow-hidden group transition-shadow duration-300 transform hover:shadow-2xl "
+      className="pb-2 m-3 border-2 rounded-2xl border-neutral-100 overflow-hidden group transition-shadow duration-300 transform hover:shadow-2xl"
       key={product.id}
     >
-      <Link href={`/products/${product.id}`} key={product.id}>
+      <Link href={`/products/${product.id}`}>
         <div className="grid">
-          <div className="z-10 col-start-1 row-start-1 m-4 ">
+          <div className="z-10 col-start-1 row-start-1 m-4">
             <div className="items-center gap-2 rounded-2xl px-3 py-2 place-content-end">
               <p className="text-sm font-medium text-cyan-500 drop-shadow-md">
                 {product.availabilityStatus}
               </p>
             </div>
           </div>
-
           <Image
             loading="eager"
-            alt="hej"
+            alt={product.title}
             src={product.thumbnail}
             width={400}
             height={200}
@@ -50,7 +62,6 @@ async function CardContainer({ category }) {
           <p className="py-2 text-black">{product.price} $</p>
         </div>
       </Link>
-
       <div className="p-4">
         <BasketButton product={product} />
       </div>
