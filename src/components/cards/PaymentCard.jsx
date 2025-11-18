@@ -34,9 +34,8 @@ const PaymentCard = () => {
                 <span className="font-medium group-hover:text-red-700 transition-colors">
                   {item.title}
                 </span>
-                <span>
-                {item.quantity}
-                
+                <span className="font-medium group-hover:text-red-700 transition-colors">
+                  {item.quantity}
                 </span>
                 <span className="font-semibold  group-hover:text-red-700 transition-colors">
                   ${item.price}
