@@ -5,24 +5,19 @@ const useStore = create(
   persist(
     (set, get) => ({
       basketProducts: [],
-      totalPrice: 0,
-
       addToBasket: (product) => {
         const current = get().basketProducts;
-        set({
-          basketProducts: [...current, product],
-          totalPrice: get().totalPrice + product.price,
-        });
+        set({ basketProducts: [...current, product] });
       },
-
       removeFromBasket: (id) => {
         const current = get().basketProducts;
         set({ basketProducts: current.filter((item) => item.id !== id) });
       },
+      // Selector til totalPrice
+      getTotalPrice: () =>
+        get().basketProducts.reduce((sum, item) => sum + item.price, 0),
     }),
-    {
-      name: "cart-storage",
-    },
+    { name: "cart-storage" },
   ),
 );
 

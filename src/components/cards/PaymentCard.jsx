@@ -5,7 +5,8 @@ import PaymentButton from "../ui/PaymentButton";
 import { MdDeleteOutline } from "react-icons/md";
 
 const PaymentCard = () => {
-  const { basketProducts, removeFromBasket, totalPrice } = useStore();
+  const { basketProducts, removeFromBasket, getTotalPrice } = useStore();
+  const totalPrice = getTotalPrice();
 
   return (
     <div className="max-w-2xl mx-auto px-6 py-12 bg-white shadow-sm rounded-2xl">
@@ -22,7 +23,6 @@ const PaymentCard = () => {
             >
               {/* Wrap ikon + tekst i en hover-gruppe */}
               <div className="flex items-center gap-4 group cursor-pointer">
-               
                 <div
                   onClick={() => removeFromBasket(item.id)}
                   className="text-red-500 group-hover:text-red-700 text-xl font-bold"
