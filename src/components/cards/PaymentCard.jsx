@@ -55,7 +55,7 @@ const PaymentCard = () => {
       {/* Checkout button */}
       <Link
         href="/payment"
-        className="mt-8 block w-full text-center bg-black text-white rounded-lg py-3 text-lg font-medium hover:bg-button transition"
+        className="mt-8 block w-full text-center bg-black text-white rounded-lg py-3 text-lg font-medium hover:bg-button hover:text-black transition"
       >
         Go to Checkout
       </Link>

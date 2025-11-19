@@ -39,9 +39,18 @@ async function CardContainer({ category, search }) {
         <div className="grid">
           <div className="z-10 col-start-1 row-start-1 m-4">
             <div className="items-center gap-2 rounded-2xl px-3 py-2 place-content-end">
-              <p className="text-sm font-medium text-cyan-500 drop-shadow-md">
+              <span
+                className={`
+        px-3 py-1 rounded-full shrink-0
+        ${
+          product.availabilityStatus.toLowerCase().includes("in stock")
+            ? "bg-green-100 text-green-700"
+            : "bg-red-100 text-red-700"
+        }
+      `}
+              >
                 {product.availabilityStatus}
-              </p>
+              </span>
             </div>
           </div>
           <Image

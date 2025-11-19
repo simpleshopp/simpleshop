@@ -6,7 +6,8 @@ import Image from "next/image";
 import { MdDeleteOutline } from "react-icons/md";
 
 const CheckOutCard = () => {
-  const { basketProducts, removeFromBasket, totalPrice } = useStore();
+  const { basketProducts, removeFromBasket, getTotalPrice } = useStore();
+  const totalPrice = getTotalPrice();
 
   return (
     <div className="mx-26 mb-16 -mt-4">
@@ -35,6 +36,9 @@ const CheckOutCard = () => {
                     height={80}
                     className="rounded-lg object-cover"
                   />
+                  <span className="font-medium group-hover:text-red-700 transition-colors">
+                    {item.quantity}
+                  </span>
                   <span className="font-medium  group-hover:text-red-700">
                     {item.title}
                   </span>
@@ -66,7 +70,7 @@ const CheckOutCard = () => {
         {/* Checkout */}
         <Link href="/payment" className="mt-8 block w-full">
           <button className="w-full bg-black text-white py-3 rounded-full text-lg font-medium hover:bg-gray-900 transition">
-            Go to Checkout
+            Buy
           </button>
         </Link>
       </div>

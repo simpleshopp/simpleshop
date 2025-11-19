@@ -10,7 +10,7 @@
   --font-button: 1.2;
   --color-heading: #000000;
   --color-text: #8b8b8b;
-  --color-text-button: #555555;
+  --color-text-button: #000;
 }
 
 body {
@@ -33,4 +33,8 @@ button {
   font-size: var(--font-button);
   color: var(--color-text-button);
   background-color: var(--color-button);
+}
+button:hover {
+  background-color: black;
+  color: white;
 }

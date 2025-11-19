@@ -15,11 +15,9 @@ const Hero = () => {
       <div className="col-start-1 col-end-2 row-start-1 z-10 place-self-center">
         <h1 className="mb-4">Simpel Shop</h1>
         <Link href="/products">
-        <button
-          className="px-6 py-3 rounded-lg cursor-pointer  hover:bg-pink-300!"
-        >
-          Se produkter
-        </button>
+          <button className="px-6 py-3 rounded-lg cursor-pointer  hover:bg-black! hover:text-white">
+            Se produkter
+          </button>
         </Link>
       </div>
     </div>
